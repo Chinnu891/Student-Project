@@ -3,7 +3,7 @@ node_modules/
 frontend/node_modules/
 
 # Build outputs
-frontend/build/
+# Note: frontend/build/ is included in repository for deployment
 dist/
 
 # Environment variables
