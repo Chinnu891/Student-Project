@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../config';
 
 const FatherPopup = ({ onClose, onSave }) => {
   const [father, setFather] = useState({
@@ -16,10 +17,10 @@ const FatherPopup = ({ onClose, onSave }) => {
   const [showDesigInput, setShowDesigInput] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost/student-project/getDepartments.php')
+    fetch(`${API_BASE_URL}/getDepartments.php`)
       .then(res => res.json())
       .then(data => setDepartments(data));
-    fetch('http://localhost/student-project/getDesignations.php')
+    fetch(`${API_BASE_URL}/getDesignations.php`)
       .then(res => res.json())
       .then(data => setDesignations(data));
   }, []);
@@ -31,7 +32,7 @@ const FatherPopup = ({ onClose, onSave }) => {
 
   const handleSave = () => {
     // Save to DB
-    fetch('http://localhost/student-project/saveEmployee.php', {
+    fetch(`${API_BASE_URL}/saveEmployee.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(father)

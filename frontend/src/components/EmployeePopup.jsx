@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { API_BASE_URL } from '../config';
 import './StudentForm.css'; // Using same CSS
 
 const EmployeePopup = ({ onClose, onSaved }) => {
@@ -38,11 +39,11 @@ const EmployeePopup = ({ onClose, onSaved }) => {
   }, [onClose]);
 
   useEffect(() => {
-    fetch('http://localhost/student-project/getDesignations.php')
+    fetch(`${API_BASE_URL}/getDesignations.php`)
       .then(res => res.json())
       .then(data => setDesignations(data));
 
-    fetch('http://localhost/student-project/getDepartments.php')
+    fetch(`${API_BASE_URL}/getDepartments.php`)
       .then(res => res.json())
       .then(data => setDepartments(data));
   }, []);
@@ -82,7 +83,7 @@ const EmployeePopup = ({ onClose, onSaved }) => {
 
   const checkEmployeeId = (id) => {
     if (!id) return;
-    fetch(`http://localhost/student-project/checkEmployeeId.php?employee_id=${id}`)
+    fetch(`${API_BASE_URL}/checkEmployeeId.php?employee_id=${id}`)
       .then(res => res.text())
       .then(text => {
         setEmployeeIdStatus(text === "exists" ? "Already exist" : "");
@@ -112,8 +113,8 @@ const EmployeePopup = ({ onClose, onSaved }) => {
 
   const addOption = async (type, value) => {
     const url = type === "designation"
-      ? "http://localhost/student-project/addDesignation.php"
-      : "http://localhost/student-project/addDepartment.php";
+      ? `${API_BASE_URL}/addDesignation.php`
+      : `${API_BASE_URL}/addDepartment.php`;
 
     const res = await fetch(url, {
       method: "POST",
@@ -144,7 +145,7 @@ const EmployeePopup = ({ onClose, onSaved }) => {
 
     if (!validateForm()) return;
 
-    const res = await fetch("http://localhost/student-project/saveEmployee.php", {
+    const res = await fetch(`${API_BASE_URL}/saveEmployee.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedForm)

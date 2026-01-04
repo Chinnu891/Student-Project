@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import StudentForm from './StudentForm';
 import EmployeePopup from './EmployeePopup';
+import { API_BASE_URL } from '../config';
 import './StudentList.css';
 
 const StudentList = () => {
@@ -36,17 +37,17 @@ const StudentList = () => {
 
   useEffect(() => {
     fetchStudents();
-    fetch('http://localhost/student-project/getColleges.php')
+    fetch(`${API_BASE_URL}/getColleges.php`)
       .then(res => res.json())
       .then(data => setColleges(data));
-    fetch('http://localhost/student-project/getFathers.php')
+    fetch(`${API_BASE_URL}/getFathers.php`)
       .then(res => res.json())
       .then(data => setFathers(data));
   }, [page, limit, search, searchField, sortField, sortOrder]);
 
   const fetchStudents = async () => {
     const res = await fetch(
-      `http://localhost/student-project/getStudents.php?page=${page}&limit=${limit}&search=${search}&field=${searchField}&sortField=${sortField}&sortOrder=${sortOrder}`
+      `${API_BASE_URL}/getStudents.php?page=${page}&limit=${limit}&search=${search}&field=${searchField}&sortField=${sortField}&sortOrder=${sortOrder}`
     );
     const data = await res.json();
     setStudents(data.students);
@@ -120,7 +121,7 @@ const StudentList = () => {
     let collegeId = editData.college_id;
 
     if (isOtherCollege && editData.college_name) {
-      const res = await fetch('http://localhost/student-project/addCollege.php', {
+      const res = await fetch(`${API_BASE_URL}/addCollege.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ college_name: editData.college_name }),
@@ -140,7 +141,7 @@ const StudentList = () => {
       return;
     }
 
-    const res = await fetch('http://localhost/student-project/updateStudent.php', {
+    const res = await fetch(`${API_BASE_URL}/updateStudent.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...editData, college_id: collegeId }),
@@ -159,7 +160,7 @@ const StudentList = () => {
 
   const handleDelete = async (student_id) => {
     if (!window.confirm('Are you sure you want to delete this student?')) return;
-    const res = await fetch('http://localhost/student-project/deleteStudent.php', {
+    const res = await fetch(`${API_BASE_URL}/deleteStudent.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ student_id }),

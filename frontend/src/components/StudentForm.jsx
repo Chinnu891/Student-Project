@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import EmployeePopup from './EmployeePopup';
+import { API_BASE_URL } from '../config';
 import './StudentForm.css';
 
 const StudentForm = ({ student = null, onSuccess }) => {
@@ -31,11 +32,11 @@ const StudentForm = ({ student = null, onSuccess }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost/student-project/getColleges.php')
+    fetch(`${API_BASE_URL}/getColleges.php`)
       .then(res => res.json())
       .then(data => setColleges(data));
 
-    fetch('http://localhost/student-project/getFathers.php')
+    fetch(`${API_BASE_URL}/getFathers.php`)
       .then(res => res.json())
       .then(data => setFathers(data));
 
@@ -121,7 +122,7 @@ const StudentForm = ({ student = null, onSuccess }) => {
 
   const checkStudentId = (id) => {
     if (!id) return;
-    fetch(`http://localhost/student-project/checkStudentId.php?student_id=${id}`)
+    fetch(`${API_BASE_URL}/checkStudentId.php?student_id=${id}`)
       .then(res => res.text())
       .then(text => {
         if (!student || student.student_id !== id) {
@@ -131,7 +132,7 @@ const StudentForm = ({ student = null, onSuccess }) => {
   };
 
   const addCollege = async () => {
-    const res = await fetch("http://localhost/student-project/addCollege.php", {
+    const res = await fetch(`${API_BASE_URL}/addCollege.php`, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ college_name: otherCollege })
@@ -198,8 +199,8 @@ const StudentForm = ({ student = null, onSuccess }) => {
     }
 
     const url = student
-      ? 'http://localhost/student-project/updateStudent.php'
-      : 'http://localhost/student-project/saveStudent.php';
+      ? `${API_BASE_URL}/updateStudent.php`
+      : `${API_BASE_URL}/saveStudent.php`;
 
     const res = await fetch(url, {
       method: 'POST',
