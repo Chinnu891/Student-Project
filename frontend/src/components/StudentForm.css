@@ -1,0 +1,235 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fafbfc, #cfdef3);
+  padding: 40px 20px;
+}
+
+.student-form-box {
+  background: #f3efef;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 12px 40px rgb(244, 240, 240);
+  max-width: 850px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.student-form-box:hover {
+  box-shadow: 0 3px 20px rgba(242, 243, 246, 0.599);
+} 
+
+.form-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0e0e0e;
+  margin-bottom: 30px;
+}
+
+.success-message {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.required {
+  color: red;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #000000;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: #ffffff;
+  transition: border 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(253, 254, 255, 0.2);
+}
+ input[type="date"] {
+  background-color: #fff;
+  color: #1f2937;
+  cursor: pointer;
+} 
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+}
+
+input.disabled {
+  background-color: #f3f4f6;
+  color: #f9fafd;
+  cursor: not-allowed;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.submit-btn {
+  background: linear-gradient(145deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+.submit-btn:disabled {
+  background-color: #93c5fd;
+  cursor: wait;
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 1000;
+} 
+
+
+.popup-box {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  width: 95%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: popupOpen 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupOpen {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .popup-box {
+    padding: 20px;
+  }
+}
+.student-form-box {
+  background: rgba(236, 234, 234, 0.956);  /* translucent white */
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  max-width: 850px;
+  width: 100%;
+  backdrop-filter: blur(15px);  /* 💡 adds glass effect */
+  -webkit-backdrop-filter: blur(15px);  /* for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.cancel-btn {
+  background: linear-gradient(145deg, #000000, #000000);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 10px #eb516b88;
+  transition: 0.3s;
+}
+.cancel-btn:hover {
+  box-shadow: 0 0 16px #000000aa, 0 0 8px #00000099;
+  transform: scale(1.03);
+}
+input[type="text"] {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
