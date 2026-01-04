@@ -186,15 +186,18 @@ $database = "student_registration";
 
 ### Frontend Configuration
 
-Update API endpoints in React components if your backend URL differs:
+The API base URL is configured in `frontend/src/config.js`:
 
 ```javascript
-// Default: http://localhost/student-project/
-// Update in:
-// - StudentForm.jsx
-// - StudentList.jsx
-// - EmployeePopup.jsx
+// The config automatically detects the environment:
+// - Development: http://localhost/student-project
+// - Production (GitHub Pages): Update with your backend URL
+
+// To update the production backend URL:
+// Edit frontend/src/config.js and replace 'https://your-backend-url.com/student-project'
 ```
+
+All components automatically use the `API_BASE_URL` from the config file.
 
 ## 🎮 Usage
 
