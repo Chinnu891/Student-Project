@@ -4,10 +4,10 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
 // Connect to MySQL
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "student_registration";
+$host = "sql102.infinityfree.com";
+$username = "if0_40822494";
+$password = "GyFslrhiLlD26S";
+$database = "if0_40822494_student_registration";
 
 $conn = new mysqli($host, $username, $password, $database);
 

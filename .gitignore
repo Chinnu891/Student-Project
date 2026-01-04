@@ -2,9 +2,8 @@
 node_modules/
 frontend/node_modules/
 
-# Build outputs
-# Note: frontend/build/ is included in repository for deployment
-dist/
+# Build outputs (optional - you can include build files)
+# frontend/build/
 
 # Environment variables
 .env

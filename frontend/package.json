@@ -2,7 +2,6 @@
   "name": "student-registration",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://chinnu891.github.io/Student-Project",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "date-fns": "^4.1.0",

@@ -8,10 +8,10 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Origin: http://localhost:3000");
 
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "student_registration";
+$host = "sql102.infinityfree.com";
+$username = "if0_40822494";
+$password = "GyFslrhiLlD26S";
+$database = "if0_40822494_student_registration";
 
 $conn = new mysqli($host, $username, $password, $database);
 

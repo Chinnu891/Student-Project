@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { API_BASE_URL } from '../config';
 import './StudentForm.css'; // Using same CSS
 
 const EmployeePopup = ({ onClose, onSaved }) => {
@@ -39,11 +38,11 @@ const EmployeePopup = ({ onClose, onSaved }) => {
   }, [onClose]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/getDesignations.php`)
+    fetch('https://student-project.infinityfree.me/getDesignations.php')
       .then(res => res.json())
       .then(data => setDesignations(data));
 
-    fetch(`${API_BASE_URL}/getDepartments.php`)
+    fetch('https://student-project.infinityfree.me/getDepartments.php')
       .then(res => res.json())
       .then(data => setDepartments(data));
   }, []);
@@ -83,7 +82,7 @@ const EmployeePopup = ({ onClose, onSaved }) => {
 
   const checkEmployeeId = (id) => {
     if (!id) return;
-    fetch(`${API_BASE_URL}/checkEmployeeId.php?employee_id=${id}`)
+    fetch(`https://student-project.infinityfree.me/checkEmployeeId.php?employee_id=${id}`)
       .then(res => res.text())
       .then(text => {
         setEmployeeIdStatus(text === "exists" ? "Already exist" : "");
@@ -113,8 +112,8 @@ const EmployeePopup = ({ onClose, onSaved }) => {
 
   const addOption = async (type, value) => {
     const url = type === "designation"
-      ? `${API_BASE_URL}/addDesignation.php`
-      : `${API_BASE_URL}/addDepartment.php`;
+      ? "https://student-project.infinityfree.me/addDesignation.php"
+      : "https://student-project.infinityfree.me/addDepartment.php";
 
     const res = await fetch(url, {
       method: "POST",
@@ -145,7 +144,7 @@ const EmployeePopup = ({ onClose, onSaved }) => {
 
     if (!validateForm()) return;
 
-    const res = await fetch(`${API_BASE_URL}/saveEmployee.php`, {
+    const res = await fetch("https://student-project.infinityfree.me/saveEmployee.php", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedForm)

@@ -6,10 +6,10 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "student_registration";
+$host = "sql102.infinityfree.com";
+$username = "if0_40822494";
+$password = "GyFslrhiLlD26S";
+$database = "if0_40822494_student_registration";
 
 $conn = new mysqli($host, $username, $password, $database);
 

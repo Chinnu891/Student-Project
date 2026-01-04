@@ -2,6 +2,12 @@
 
 A comprehensive full-stack web application for managing student registrations with employee/father information, colleges, departments, and designations.
 
+## 🌐 Live Website
+
+**🔗 Live URL:** [https://student-project.infinityfree.me/](https://student-project.infinityfree.me/)
+
+The website is **LIVE** and hosted on InfinityFree!
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -15,6 +21,7 @@ A comprehensive full-stack web application for managing student registrations wi
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Components](#components)
+- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -94,6 +101,7 @@ student-project/
 │   │   ├── App.js              # Main app component
 │   │   ├── index.js            # Entry point
 │   │   └── ...
+│   ├── build/                  # Production build files
 │   ├── package.json            # Frontend dependencies
 │   └── README.md               # Frontend documentation
 │
@@ -113,6 +121,7 @@ student-project/
 ├── saveStudent.php             # Save new student
 ├── updateStudent.php            # Update student record
 ├── student_registration.sql    # Database schema and data
+├── .htaccess                   # Apache configuration for React Router
 └── README.md                   # This file
 ```
 
@@ -178,26 +187,20 @@ Edit the following files if your database credentials differ:
 Update database connection in PHP files:
 
 ```php
-$host = "localhost";
-$username = "root";
-$password = "";  // Your MySQL password
+$host = "localhost";  // or your MySQL hostname
+$username = "root";   // Your MySQL username
+$password = "";       // Your MySQL password
 $database = "student_registration";
 ```
 
 ### Frontend Configuration
 
-The API base URL is configured in `frontend/src/config.js`:
+The API base URL is configured in React components. For production, update URLs to your backend:
 
 ```javascript
-// The config automatically detects the environment:
-// - Development: http://localhost/student-project
-// - Production (GitHub Pages): Update with your backend URL
-
-// To update the production backend URL:
-// Edit frontend/src/config.js and replace 'https://your-backend-url.com/student-project'
+// Production URL (InfinityFree example):
+https://student-project.infinityfree.me/
 ```
-
-All components automatically use the `API_BASE_URL` from the config file.
 
 ## 🎮 Usage
 
@@ -227,51 +230,6 @@ The application will open at `http://localhost:3000`
 cd frontend
 npm run build
 ```
-
-## 🌐 GitHub Pages Deployment
-
-The project is configured for automatic deployment to GitHub Pages using GitHub Actions.
-
-### Live URL
-Your site is live at: **https://chinnu891.github.io/Student-Project/**
-
-### Automatic Deployment
-- The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically builds and deploys the React app when you push to the `main` branch
-- The workflow runs on every push to `main` branch
-- Build files are automatically deployed to GitHub Pages
-
-### Backend Configuration for Production
-
-**Important:** The PHP backend needs to be hosted separately as GitHub Pages only supports static files. 
-
-1. **Update API URL in Production:**
-   - Edit `frontend/src/config.js`
-   - Replace `'https://your-backend-url.com/student-project'` with your actual backend URL
-   - Rebuild and push to trigger deployment
-
-2. **Backend Hosting Options:**
-   - **000webhost** (Free PHP hosting)
-   - **InfinityFree** (Free PHP hosting)
-   - **Heroku** (with PHP buildpack)
-   - **Your own server** (with Apache/Nginx)
-
-3. **CORS Configuration:**
-   - Make sure your PHP backend allows CORS from `https://chinnu891.github.io`
-   - The PHP files already include CORS headers, but verify they work with your hosting provider
-
-### Manual Deployment
-
-If you need to manually deploy:
-
-1. Build the React app:
-   ```bash
-   cd frontend
-   npm run build
-   ```
-
-2. The build files will be in `frontend/build/` directory
-
-3. GitHub Pages is configured to deploy from the `main` branch automatically via GitHub Actions
 
 ## 📡 API Endpoints
 
@@ -359,18 +317,29 @@ If you need to manually deploy:
    - `designation_id` (Primary Key)
    - `designation_name`
 
-## 🔧 Development
+## 🌐 Deployment
 
-### Running Tests
+### Live Website
 
-```bash
-cd frontend
-npm test
-```
+**🔗 Live URL:** [https://student-project.infinityfree.me/](https://student-project.infinityfree.me/)
 
-### Code Formatting
+The website is currently hosted on **InfinityFree** and is fully functional.
 
-The project uses standard React and PHP coding conventions.
+### Deployment Details
+
+- **Hosting Platform:** InfinityFree
+- **Frontend:** React build files
+- **Backend:** PHP files
+- **Database:** MySQL (InfinityFree)
+
+### For Local Development
+
+1. Clone the repository
+2. Install dependencies: `npm install` (in frontend folder)
+3. Set up database using `student_registration.sql`
+4. Update database credentials in PHP files
+5. Run `npm start` for frontend
+6. Use PHP server or Apache/Nginx for backend
 
 ## 🤝 Contributing
 
@@ -392,11 +361,13 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - GitHub: [@Chinnu891](https://github.com/Chinnu891)
 - Repository: [Student-Project](https://github.com/Chinnu891/Student-Project.git)
+- **Live Website:** [https://student-project.infinityfree.me/](https://student-project.infinityfree.me/)
 
 ## 🙏 Acknowledgments
 
 - React team for the amazing framework
 - PHP community for backend support
+- InfinityFree for free hosting
 - All contributors and users of this project
 
 ## 📞 Support
@@ -404,6 +375,8 @@ This project is open source and available under the [MIT License](LICENSE).
 If you encounter any issues or have questions, please open an issue on the GitHub repository.
 
 ---
+
+**🌐 Visit the live website:** [https://student-project.infinityfree.me/](https://student-project.infinityfree.me/)
 
 **Note**: Make sure to update the database credentials and API endpoints according to your local setup before running the application.
 

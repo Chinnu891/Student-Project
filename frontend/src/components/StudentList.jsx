@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StudentForm from './StudentForm';
 import EmployeePopup from './EmployeePopup';
-import { API_BASE_URL } from '../config';
 import './StudentList.css';
 
 const StudentList = () => {
@@ -37,17 +36,17 @@ const StudentList = () => {
 
   useEffect(() => {
     fetchStudents();
-    fetch(`${API_BASE_URL}/getColleges.php`)
+    fetch('https://student-project.infinityfree.me/getColleges.php')
       .then(res => res.json())
       .then(data => setColleges(data));
-    fetch(`${API_BASE_URL}/getFathers.php`)
+    fetch('https://student-project.infinityfree.me/getFathers.php')
       .then(res => res.json())
       .then(data => setFathers(data));
   }, [page, limit, search, searchField, sortField, sortOrder]);
 
   const fetchStudents = async () => {
     const res = await fetch(
-      `${API_BASE_URL}/getStudents.php?page=${page}&limit=${limit}&search=${search}&field=${searchField}&sortField=${sortField}&sortOrder=${sortOrder}`
+      `https://student-project.infinityfree.me/getStudents.php?page=${page}&limit=${limit}&search=${search}&field=${searchField}&sortField=${sortField}&sortOrder=${sortOrder}`
     );
     const data = await res.json();
     setStudents(data.students);
@@ -121,7 +120,7 @@ const StudentList = () => {
     let collegeId = editData.college_id;
 
     if (isOtherCollege && editData.college_name) {
-      const res = await fetch(`${API_BASE_URL}/addCollege.php`, {
+      const res = await fetch('https://student-project.infinityfree.me/addCollege.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ college_name: editData.college_name }),
@@ -141,7 +140,7 @@ const StudentList = () => {
       return;
     }
 
-    const res = await fetch(`${API_BASE_URL}/updateStudent.php`, {
+    const res = await fetch('https://student-project.infinityfree.me/updateStudent.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...editData, college_id: collegeId }),
@@ -160,7 +159,7 @@ const StudentList = () => {
 
   const handleDelete = async (student_id) => {
     if (!window.confirm('Are you sure you want to delete this student?')) return;
-    const res = await fetch(`${API_BASE_URL}/deleteStudent.php`, {
+    const res = await fetch('https://student-project.infinityfree.me/deleteStudent.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ student_id }),
