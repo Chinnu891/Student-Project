@@ -225,6 +225,51 @@ cd frontend
 npm run build
 ```
 
+## 🌐 GitHub Pages Deployment
+
+The project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+### Live URL
+Your site is live at: **https://chinnu891.github.io/Student-Project/**
+
+### Automatic Deployment
+- The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically builds and deploys the React app when you push to the `main` branch
+- The workflow runs on every push to `main` branch
+- Build files are automatically deployed to GitHub Pages
+
+### Backend Configuration for Production
+
+**Important:** The PHP backend needs to be hosted separately as GitHub Pages only supports static files. 
+
+1. **Update API URL in Production:**
+   - Edit `frontend/src/config.js`
+   - Replace `'https://your-backend-url.com/student-project'` with your actual backend URL
+   - Rebuild and push to trigger deployment
+
+2. **Backend Hosting Options:**
+   - **000webhost** (Free PHP hosting)
+   - **InfinityFree** (Free PHP hosting)
+   - **Heroku** (with PHP buildpack)
+   - **Your own server** (with Apache/Nginx)
+
+3. **CORS Configuration:**
+   - Make sure your PHP backend allows CORS from `https://chinnu891.github.io`
+   - The PHP files already include CORS headers, but verify they work with your hosting provider
+
+### Manual Deployment
+
+If you need to manually deploy:
+
+1. Build the React app:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. The build files will be in `frontend/build/` directory
+
+3. GitHub Pages is configured to deploy from the `main` branch automatically via GitHub Actions
+
 ## 📡 API Endpoints
 
 ### Student Endpoints
